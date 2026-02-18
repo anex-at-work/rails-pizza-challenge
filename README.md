@@ -1,4 +1,4 @@
-# Evermood Rails Coding Challenge
+# Acture Group Rails Coding Challenge
 
 We are excited that you are interested in performing our coding challenge. The purpose of this assignment is to see how you approach problems and evaluate the quality of your code.
 
@@ -20,7 +20,7 @@ At last, the total price for a pizza order is to be calculated and displayed. Fo
 - The price of a pizza depends on the size. Per size there is a "multiplier" that is multiplied by the base price of the pizza.
 - Extra ingredients are also provided with this multiplier.
 - Ingredients that are omitted during preparation do not change the price of the pizza.
-- Promotion codes allow to get pizzas for free; e.g., two small salami pizzas for the price of one. Extra ingredients will still be charged though. Multiple promotion codes can be specified per order. A promotion code can also be applied more than once to the same order (a 2-for-1 code automatically reduces 4 pizzas to 2 for one order).
+- Promotion codes allow getting pizzas for free; e.g., two small salami pizzas for the price of one. Extra ingredients will still be charged though. Multiple promotion codes can be specified per order. A promotion code can also be applied more than once to the same order (a 2-for-1 code automatically reduces 4 pizzas to 2 for one order).
 - A discount code reduces the total invoice amount by a percentage.
 
 In [`data/config.yml`](data/config.yml) you can find the list of selectable pizzas, the multipliers and ingredients, as well as the promotion and discount codes.
