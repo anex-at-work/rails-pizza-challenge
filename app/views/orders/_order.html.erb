@@ -1,36 +1,38 @@
-<hr>
-<div class="order">
-  <div class="order__content" style="display: flex; justify-content: normal; gap: 2rem;">
-    <div class="order__meta" style="min-width: 50%;">
-      <div class="order__id">ID: <%= order.id %></div>
-      <div>Created: <%= order.created_at %></div>
-      <div>Promotion Codes: <%= format_codes(order.promotions) %></div>
-      <div>Discount Codes: <%= format_codes(order.discount) %></div>
+<%= turbo_frame_tag dom_id(order) do %>
+  <hr>
+  <div class="order">
+    <div class="order__content" style="display: flex; justify-content: normal; gap: 2rem;">
+      <div class="order__meta" style="min-width: 50%;">
+        <div class="order__id">ID: <%= order.id %></div>
+        <div>Created: <%= order.created_at %></div>
+        <div>Promotion Codes: <%= format_codes(order.promotions) %></div>
+        <div>Discount Codes: <%= format_codes(order.discount) %></div>
 
-      <br />
-      <div>Total Price: <%= format_price(order.price) %></div>
-    </div>
+        <br />
+        <div>Total Price: <%= format_price(order.price) %></div>
+      </div>
 
-    <div class="order__items" style="min-width: 260px;">
-      <div>Items:</div>
-      <ul>
-        <% order.order_pizzas.each do |order_pizza| %>
-          <li>
-            <%= order_pizza.pizza.name %> (<%= order_pizza.size %>)
-            <% if show_add_remove?(order_pizza) %>
-              <ul>
-                <% if order_pizza.add.present? %>
-                  <li>Add: <%= format_ingredient_names(order_pizza.add) %></li>
-                <% end %>
-                <% if order_pizza.remove.present? %>
-                  <li>Remove: <%= format_ingredient_names(order_pizza.remove) %></li>
-                <% end %>
-              </ul>
-            <% end %>
-          </li>
-        <% end %>
-      </ul>
+      <div class="order__items" style="min-width: 260px;">
+        <div>Items:</div>
+        <ul>
+          <% order.order_pizzas.each do |order_pizza| %>
+            <li>
+              <%= order_pizza.pizza.name %> (<%= order_pizza.size %>)
+              <% if show_add_remove?(order_pizza) %>
+                <ul>
+                  <% if order_pizza.add.present? %>
+                    <li>Add: <%= format_ingredient_names(order_pizza.add) %></li>
+                  <% end %>
+                  <% if order_pizza.remove.present? %>
+                    <li>Remove: <%= format_ingredient_names(order_pizza.remove) %></li>
+                  <% end %>
+                </ul>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
     </div>
+    <%= button_to "Complete", order_url(order), method: :patch %>
   </div>
-  <%= button_to "Complete", order_url(order), method: :patch %>
-</div>
+<% end %>
