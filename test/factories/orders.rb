@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :order do
     transient do
+      calculate_price { true }
       order_pizzas_count { rand(1..7) }
       with_discount { [ true, false ].sample }
       with_promotions { [ true, false ].sample }
@@ -17,6 +18,7 @@ FactoryBot.define do
         order: order
       )
       # Here is where usually better to calculate total price
+      next unless evaluator.calculate_price
       order.price = CalculatePrice.new.call(order:)
       order.save
     end

@@ -4,5 +4,9 @@ class OrdersController < ApplicationController
   end
 
   def update
+    order = Order.find(params[:id])
+    order.completed!
+
+    redirect_to orders_url, notice: "Order completed."
   end
 end

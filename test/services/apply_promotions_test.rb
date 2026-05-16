@@ -2,7 +2,7 @@ require "test_helper"
 
 class ApplyPromotionsTest < ActiveSupport::TestCase
   test "should raise an error for unknown promotion" do
-    order = FactoryBot.create(:order, promotions: [ "UNKNOWN" ])
+    order = FactoryBot.create(:order, promotions: [ "UNKNOWN" ], calculate_price: false)
     assert_raises(ArgumentError) do
       ApplyPromotions.new.call(order:)
     end
@@ -35,13 +35,12 @@ class ApplyPromotionsTest < ActiveSupport::TestCase
       from: 3,
       to: 2
     })
-    order = FactoryBot.create(:order, promotions: [ "3FOR2" ], order_pizzas_count: 0)
+    order = FactoryBot.create(:order, promotions: [ "3FOR2" ], order_pizzas_count: 0, calculate_price: false)
     pizza = FactoryBot.create(:pizza, :salami)
     FactoryBot.create_list(:order_pizza, 4, order: order, pizza:, size: "small")
     order.reload
 
-    apply_promotions = ApplyPromotions.new(promotions: { "3FOR2" => promotion })
-    order_clone = apply_promotions.call(order:)
+    order_clone = ApplyPromotions.new(promotions: { "3FOR2" => promotion }).call(order:)
     assert_equal 2, order_clone.order_pizzas.size
   end
 

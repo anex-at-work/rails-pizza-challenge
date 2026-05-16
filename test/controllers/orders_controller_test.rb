@@ -15,8 +15,9 @@ class OrdersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should patch update" do
-    order = FactoryBot.create(:order)
+    order = FactoryBot.create(:order, state: :open)
     patch order_url(order)
-    assert_response :success
+    assert_redirected_to orders_url
+    assert order.reload.completed?
   end
 end
