@@ -12,11 +12,11 @@
 
 ActiveRecord::Schema[8.1].define(version: 2026_05_16_120009) do
   create_table "order_pizzas", force: :cascade do |t|
-    t.text "add", default: "[]"
+    t.text "add"
     t.datetime "created_at", null: false
     t.text "order_id", null: false
     t.integer "pizza_id", null: false
-    t.text "remove", default: "[]"
+    t.text "remove"
     t.text "size", null: false
     t.float "size_multiplier", default: 1.0, null: false
     t.datetime "updated_at", null: false
@@ -28,7 +28,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_16_120009) do
     t.datetime "created_at", null: false
     t.text "discount"
     t.integer "price"
-    t.text "promotions", default: "[]"
+    t.text "promotions"
     t.text "state", default: "open"
     t.datetime "updated_at", null: false
   end

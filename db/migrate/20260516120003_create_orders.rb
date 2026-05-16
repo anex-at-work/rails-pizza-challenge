@@ -3,7 +3,7 @@ class CreateOrders < ActiveRecord::Migration[8.1]
     create_table :orders, id: :text do |t|
       t.integer :price
       t.text :discount, null: true
-      t.text :promotions, default: '[]'
+      t.text :promotions, null: true
       t.text :state, default: 'open'
 
       t.timestamps

@@ -5,8 +5,8 @@ class CreateOrderPizzas < ActiveRecord::Migration[8.1]
       t.references :pizza, null: false, foreign_key: true
       t.text :size, null: false
       t.float :size_multiplier, null: false, default: 1.0
-      t.text :add, default: '[]'
-      t.text :remove, default: '[]'
+      t.text :add, null: true
+      t.text :remove, null: true
 
       t.timestamps
     end

@@ -2,6 +2,8 @@ class Order < ApplicationRecord
   enum :state, { open: "open", completed: "completed" }
   has_many :order_pizzas
 
+  serialize :promotions, coder: JSON
+
   before_create :generate_id
 
   scope :with_pizzas, -> { includes(order_pizzas: :pizza) }

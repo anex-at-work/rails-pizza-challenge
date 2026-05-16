@@ -8,7 +8,7 @@ FactoryBot.define do
 
     state { :open }
     discount { with_discount ? "SAVE5" : nil }
-    promotions { with_promotions ? [ "2FOR1" ] : "[]" }
+    promotions { with_promotions ? [ "2FOR1" ] : [] }
 
     after(:create) do |order, evaluator|
       order.order_pizzas = create_list(
