@@ -1,0 +1,2 @@
+class OrderPizza < ApplicationRecord
+end
