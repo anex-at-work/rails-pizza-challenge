@@ -2,6 +2,10 @@
 
 A Rails 8.1 pizza order management application with order review, customization, promotions, and discounts.
 
+## Implementation Details (PLEASE READ THEM FIRST)
+
+See [SOLUTION.md](./SOLUTION.md) for detailed architectural decisions, service patterns, and personal explanation.
+
 ## Quick Start
 
 ### Prerequisites
@@ -73,10 +77,6 @@ bin/ci
 ```
 
 This runs setup, linters (`rubocop`, `bundler-audit`, `brakeman`), and the full test suite.
-
-## Implementation Details
-
-See [SOLUTION.md](./SOLUTION.md) for detailed architectural decisions, service patterns, and customization flow.
 
 ## Development Notes
 
