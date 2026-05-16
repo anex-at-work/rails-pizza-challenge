@@ -7,3 +7,9 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+FactoryBot.create(:pizza, :margherita)
+FactoryBot.create(:pizza, :salami)
+FactoryBot.create(:pizza, :tonno)
+
+FactoryBot.create_list(:order, 10)
