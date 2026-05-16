@@ -1,24 +1,88 @@
-# README
+# Rails Pizza Challenge
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A Rails 8.1 pizza order management application with order review, customization, promotions, and discounts.
 
-Things you may want to cover:
+## Quick Start
 
-* Ruby version
+### Prerequisites
 
-* System dependencies
+- Ruby (managed via `rvm` or `rbenv`)
+- Node.js and npm
+- SQLite3
 
-* Configuration
+### Setup
 
-* Database creation
+```bash
+bin/setup --skip-server
+```
 
-* Database initialization
+This installs dependencies, creates the database, and loads seed data (10 randomized pizza orders with the full catalog).
 
-* How to run the test suite
+### Run Locally
 
-* Services (job queues, cache servers, search engines, etc.)
+```bash
+bin/dev
+```
 
-* Deployment instructions
+Starts the Rails server on `http://localhost:3000`. The app opens to the order review page showing all open orders.
 
-* ...
+## Usage
+
+- **View orders:** Navigate to `/orders` or `/` to see all open orders with pizzas and customizations.
+- **Complete an order:** Click the "Complete" button on any order to mark it as completed and remove it from the list.
+- **Seed data:** The app includes 10 pre-generated orders with various pizzas, sizes, and ingredient customizations.
+
+## Testing
+
+### Run all tests
+
+```bash
+bin/rails test
+```
+
+### Run a specific test file
+
+```bash
+bin/rails test test/models/order_test.rb
+```
+
+### Run a test at a specific line
+
+```bash
+bin/rails test test/controllers/orders_controller_test.rb:17
+```
+
+### Refresh seed data in test environment
+
+```bash
+env RAILS_ENV=test bin/rails db:seed:replant
+```
+
+## Linting & Quality
+
+### Lint all Ruby code
+
+```bash
+bin/rubocop
+```
+
+### Run full CI pipeline (what runs on push)
+
+```bash
+bin/ci
+```
+
+This runs setup, linters (`rubocop`, `bundler-audit`, `brakeman`), and the full test suite.
+
+## Implementation Details
+
+See [SOLUTION.md](./SOLUTION.md) for detailed architectural decisions, service patterns, and customization flow.
+
+## Development Notes
+
+- The app has **no JavaScript build pipeline**; Hotwire is configured via importmap.
+- Use `bin/setup --skip-server` to avoid starting the dev server during setup.
+
+## License
+
+MIT
