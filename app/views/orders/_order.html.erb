@@ -17,10 +17,16 @@
         <% order.order_pizzas.each do |order_pizza| %>
           <li>
             <%= order_pizza.pizza.name %> (<%= order_pizza.size %>)
-            <ul>
-              <li>Add: <%= order_pizza.add %></li>
-              <li>Remove: <%= order_pizza.remove %></li>
-            </ul>
+            <% if show_add_remove?(order_pizza) %>
+              <ul>
+                <% if order_pizza.add.present? %>
+                  <li>Add: <%= format_ingredient_names(order_pizza.add) %></li>
+                <% end %>
+                <% if order_pizza.remove.present? %>
+                  <li>Remove: <%= format_ingredient_names(order_pizza.remove) %></li>
+                <% end %>
+              </ul>
+            <% end %>
           </li>
         <% end %>
       </ul>

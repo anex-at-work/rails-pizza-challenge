@@ -8,4 +8,12 @@ module OrdersHelper
 
     codes.is_a?(Array) ? codes.join(", ") : codes.presence
   end
+
+  def format_ingredient_names(items)
+    items.map { |i| i["name"] }.join(", ")
+  end
+
+  def show_add_remove?(order_pizza)
+    order_pizza.add.present? || order_pizza.remove.present?
+  end
 end
