@@ -41,4 +41,14 @@ class CalculatePriceTest < ActiveSupport::TestCase
 
     assert_equal 200, price
   end
+
+  test "should correctly apply discount promotions" do
+    order = FactoryBot.create(:order, order_pizzas_count: 0, discount: "SAVE5", with_promotions: false)
+    pizza = FactoryBot.create(:pizza, :salami, price: 100)
+    FactoryBot.create_list(:order_pizza, 2, order: order, pizza:, size: "small", size_multiplier: 1.0, add: [])
+    order.reload
+    price = CalculatePrice.new.call(order:)
+
+    assert_equal 190, price
+  end
 end
