@@ -16,6 +16,9 @@ FactoryBot.define do
         evaluator.order_pizzas_count,
         order: order
       )
+      # Here is where usually better to calculate total price
+      order.price = CalculatePrice.new.call(order:)
+      order.save
     end
 
     trait :completed do

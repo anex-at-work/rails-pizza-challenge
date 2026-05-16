@@ -18,6 +18,8 @@ class CalculatePrice
   private
   def additional_ingredients_price(order:, price:)
     delta = order.order_pizzas.sum do |order_pizza|
+      next 0 if order_pizza.add.nil?
+
       order_pizza.add.map { |a| a["price"] }.sum * order_pizza.size_multiplier
     end
 

@@ -4,7 +4,7 @@ class CalculatePriceTest < ActiveSupport::TestCase
   test "should summ all prizes regarding multipliers for simple order without discount and promotions" do
     order = FactoryBot.create(:order, order_pizzas_count: 0, with_discount: false, with_promotions: false)
     pizza = FactoryBot.create(:pizza, price: 100)
-    FactoryBot.create(:order_pizza, order: order, size_multiplier: 1.0, pizza:, add: [])
+    FactoryBot.create(:order_pizza, order: order, size_multiplier: 1.0, pizza:, add: nil)
     FactoryBot.create(:order_pizza, order: order, size_multiplier: 1.5, pizza:, add: [])
     order.reload
     price = CalculatePrice.new.call(order:)

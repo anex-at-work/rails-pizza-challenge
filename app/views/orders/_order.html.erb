@@ -4,11 +4,11 @@
     <div class="order__meta" style="min-width: 50%;">
       <div class="order__id">ID: <%= order.id %></div>
       <div>Created: <%= order.created_at %></div>
-      <div>Promotion Codes: <%= order.promotions %></div>
-      <div>Discount Codes: <%= order.discount %></div>
+      <div>Promotion Codes: <%= format_codes(order.promotions) %></div>
+      <div>Discount Codes: <%= format_codes(order.discount) %></div>
 
       <br />
-      <div>Total Price: <%= order.price %>€</div>
+      <div>Total Price: <%= format_price(order.price) %></div>
     </div>
 
     <div class="order__items" style="min-width: 260px;">
